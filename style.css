@@ -40,9 +40,38 @@ header div{
 }
 #map{
     width: 100%;
-    height: 75vh;
+    height: 76vh;
 }
 footer{
     width: 100%;
-    height: 5vh;
+    height: 4vh;
+    background-color: black;
+    display: flex;
+}
+small{
+    color: white;
+    margin: auto;
+}
+main{
+    position: relative;
+}
+.info{
+    height: 10%;
+    width: 35%;
+    position: absolute;
+    background-color: whitesmoke;
+    border-radius: 30px; 
+    z-index: 999;
+    top: 15vh;
+    left: 32%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 2s ease-in;
+}
+.ver-info{
+    opacity: 1;
+    visibility: visible;
+}
+.contenedor{
+    display: flex;
 }

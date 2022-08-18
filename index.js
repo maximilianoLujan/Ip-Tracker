@@ -1,4 +1,6 @@
-const d = document;
+import cargarCoordenadas from "./Funcionalidades/cargarCoordenadas.js";
+const d = document,
+    $input = d.getElementById("search");
 
 let map = L.map('map').setView([51.505, -0.09], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -8,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 d.addEventListener("click",e => {
     if (e.target.matches("#button-search")){
-        alert("buscar")
+        cargarCoordenadas($input.value,map)
     }
 })
 d.addEventListener("keyup", e =>{
@@ -16,7 +18,7 @@ d.addEventListener("keyup", e =>{
         if (!(e.key==="Enter")){
             return;
         } else{
-            alert("buscar")
+            cargarCoordenadas($input.value,map)
         }
     }
 })
