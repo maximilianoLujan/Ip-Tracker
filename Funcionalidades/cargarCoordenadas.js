@@ -4,12 +4,12 @@ import geokey from "../helpers/keyGeoipify.js";
 const d = document,
     $info = d.querySelector(".info");
 export default function cargarCoordenadas(valor,map){
-    console.log(map)
     fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${geokey.key}&ipAddress=${valor}`)
     .then(res => res.json())
     .then(json => {
         console.log(json)
-        const info = json.location,ciudad = info.city,pais = info.country,lat = info.lat,lng = info.lng;
+        if (!json.code){
+            const info = json.location,ciudad = info.city,pais = info.country,lat = info.lat,lng = info.lng;
             $info.innerHTML = `
                 <div class="contenedor">
                     <div>
@@ -37,9 +37,15 @@ export default function cargarCoordenadas(valor,map){
             $info.classList.add("ver-info");
             map.setView([lat,lng],18)
             let marker = L.marker([lat,lng]).addTo(map);
-        console.log(json)
+        } else {
+            $info.innerHTML = `
+            <h2>La direccion ingresada es invalida</h2>
+            <h3>${json.code}: ${json.messages ?json.messages :"Ha ocurrido un error"}</h3>
+            `
+            $info.classList.add("ver-info");
+        }
     })
-    .catch(err =>{
+    .catch(err=>{
         console.log(err)
     })
 }
