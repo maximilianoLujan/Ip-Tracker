@@ -14,22 +14,22 @@ export default function cargarCoordenadas(valor,map){
                 <div class="contenedor">
                     <div>
                         <p>Ip Address</p>
-                        <h3>${valor}</h3>
+                        <h5>${valor}</h5>
                     </div>
                     <hr></hr>
                     <div>
                         <p>Location</p>
-                        <h3>${ciudad}, ${pais}</h3>
+                        <h5>${ciudad}, ${pais}</h5>
                     </div>
                     <hr></hr>
                     <div>
                         <p>TimeZone</p>
-                        <h3>UTC ${info.timezone}</h3>
+                        <h5>UTC ${info.timezone}</h5>
                     </div>
                     <hr></hr>
                     <div>
                     <p>ISP</p>
-                    <h3>${json.isp}</h3>
+                    <h5>${json.isp}</h5>
                     </div>
                 </div>
             
@@ -38,11 +38,19 @@ export default function cargarCoordenadas(valor,map){
             map.setView([lat,lng],18)
             let marker = L.marker([lat,lng]).addTo(map);
         } else {
-            $info.innerHTML = `
-            <h2>La direccion ingresada es invalida</h2>
-            <h3>${json.code}: ${json.messages ?json.messages :"Ha ocurrido un error"}</h3>
+            $info.innerHTML = 
+            `<div class="contenedor">
+                <div>
+                <p>La direccion ingresada es invalida</p>
+                </div>
+                <hr></hr>
+                    <h5>${json.code}: ${json.messages ?json.messages :"Ha ocurrido un error"}</h5>
+                </div>
+                
+                
             `
             $info.classList.add("ver-info");
+            
         }
     })
     .catch(err=>{
