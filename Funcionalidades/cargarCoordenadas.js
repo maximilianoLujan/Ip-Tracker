@@ -4,10 +4,9 @@ import geokey from "../helpers/keyGeoipify.js";
 const d = document,
     $info = d.querySelector(".info");
 export default function cargarCoordenadas(valor,map){
-    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${geokey.key}&ipAddress=${valor}`)
+    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${geokey.key}&ipAddress=${valor}&domain=${valor}`)
     .then(res => res.json())
     .then(json => {
-        console.log(json)
         if (!json.code){
             const info = json.location,ciudad = info.city,pais = info.country,lat = info.lat,lng = info.lng;
             $info.innerHTML = `

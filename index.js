@@ -1,5 +1,6 @@
 import cambiarStyles from "./Funcionalidades/cambiarStyle.js";
 import cargarCoordenadas from "./Funcionalidades/cargarCoordenadas.js";
+import mostrarInfo from "./Funcionalidades/mostrarInfo.js";
 const d = document,
     $input = d.getElementById("search"),
     $menu = d.querySelector(".menu")
@@ -21,6 +22,9 @@ d.addEventListener("click",e => {
         e.preventDefault();
         $menu.classList.remove("activar-menu")
         cambiarStyles(e.target,map)
+    }
+    if (e.target.matches("#mi-boton")){
+        mostrarInfo();
     }
 })
 d.addEventListener("keyup", e =>{
