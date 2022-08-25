@@ -7,17 +7,6 @@ export default function cargarModo(){
     console.log(localStorage)
     const $selectores = d.querySelectorAll("[data-dark]");
     if (l.getItem("tema") == "claro"){
-        l.setItem("tema","oscuro")
-        $selectores.forEach(el => {
-            el.classList.add("dark")
-        })
-        $header.style.backgroundImage = `url("assets/fondonegro.png")`;
-        $menu.style.backgroundImage = `url("assets/menu-blanco.png")`;
-        $mode.style.backgroundImage = `url("assets/lampara-blanca.png")`;
-        $menu.style.border = `1px solid grey`;
-        $mode.style.border = `1px solid grey`;
-    } else{
-        l.setItem("tema","claro");
         $selectores.forEach(el => {
             el.classList.remove("dark")
         })
@@ -26,6 +15,16 @@ export default function cargarModo(){
         $mode.style.backgroundImage = `url("assets/lampara.png")`;
         $menu.style.border = `1px solid #191919`;
         $mode.style.border = `1px solid #191919`;
+    } else{
+        $selectores.forEach(el => {
+            el.classList.add("dark")
+        })
+        $header.style.backgroundImage = `url("assets/fondonegro.png")`;
+        $menu.style.backgroundImage = `url("assets/menu-blanco.png")`;
+        $mode.style.backgroundImage = `url("assets/lampara-blanca.png")`;
+        $menu.style.border = `1px solid grey`;
+        $mode.style.border = `1px solid grey`;
+        
     }
 
 

@@ -3,14 +3,16 @@ import geokey from "../helpers/keyGeoipify.js";
 
 const d = document,
     $info = d.querySelector(".info");
+let marker = L.marker([0,0]);
 export default function cargarCoordenadas(valor,map){
+    map.removeLayer(marker)
     fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${geokey.key}&ipAddress=${valor}&domain=${valor}`)
     .then(res => res.json())
     .then(json => {
         if (!json.code){
             const info = json.location,ciudad = info.city,pais = info.country,lat = info.lat,lng = info.lng;
             $info.innerHTML = `
-                <div class="contenedor">
+                <div data-dark class="contenedor">
                     <div>
                         <p>Ip Address</p>
                         <h5>${valor}</h5>
@@ -35,7 +37,7 @@ export default function cargarCoordenadas(valor,map){
             `
             $info.classList.add("ver-info");
             map.setView([lat,lng],18)
-            let marker = L.marker([lat,lng]).addTo(map);
+            marker = L.marker([lat,lng]).addTo(map);
         } else {
             $info.innerHTML = 
             `<div class="contenedor">
