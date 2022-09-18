@@ -25,7 +25,7 @@ d.addEventListener("DOMContentLoaded", e =>{
             $menu.classList.remove("activar-menu")
             cambiarStyles(e.target,map)
         }
-        if (e.target.matches("#mi-boton")||e.target.matches(".mi-boton2")){
+        if (e.target.matches("#mi-boton")){
             mostrarInfo();
         }
     })
